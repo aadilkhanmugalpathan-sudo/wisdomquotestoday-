@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>WisdomQuotesToday — Quotes & Knowledge</title>
+  <meta name="description" content="WisdomQuotesToday — motivational quotes, practical knowledge and short articles." />
+
+  <!-- ============================
+       GOOGLE ADSENSE AUTO-ADS
+       (Auto Ads script with your publisher ID)
+       This enables page-level / auto ads. Google will decide placement.
+       ============================ -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7912062759701492"
+          crossorigin="anonymous"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-7912062759701492",
+      enable_page_level_ads: true
+    });
+  </script>
+
+  <!-- Simple embedded CSS (dark theme, responsive) -->
+  <style>
+    :root{
+      --bg:#070707; --card:#0f1113; --muted:#9aa4b2; --accent:#d4af37;
+      --maxw:900px; --radius:12px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:var(--bg);color:#e6eef6;display:flex;justify-content:center;padding:18px}
+    .wrap{max-width:var(--maxw);width:100%}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,#0b0f12,#071018);display:flex;align-items:center;justify-content:center;color:var(--accent);font-weight:800;font-size:20px;border:1px solid rgba(212,175,55,0.12)}
+    h1{margin:0;font-size:18px}
+    p.lead{color:var(--muted);margin:4px 0 0 0;font-size:13px}
+    nav{display:flex;gap:8px;flex-wrap:wrap}
+    a.btn{color:var(--muted);text-decoration:none;border:1px solid rgba(255,255,255,0.03);padding:8px 12px;border-radius:10px;font-size:13px}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:18px}
+    @media(min-width:880px){ .grid{grid-template-columns:2fr 340px} }
+    .card{background:var(--card);border-radius:12px;padding:14px;box-shadow:0 6px 18px rgba(0,0,0,0.6)}
+    .quote{font-weight:700;font-size:18px}
+    .meta{color:var(--muted);font-size:13px}
+    .post{padding:12px;border-radius:10px;border-left:4px solid rgba(212,175,55,0.08);margin-bottom:12px}
+    .small{color:var(--muted);font-size:13px}
+    .search{display:flex;gap:8px;margin-top:10px}
+    input[type="text"], textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit}
+    .btn-primary{background:var(--accent);color:#071018;padding:10px 12px;border-radius:10px;border:none;cursor:pointer}
+    footer{margin-top:18px;color:var(--muted);font-size:13px;text-align:center}
+    .ad-slot{margin-top:12px;border-radius:8px;padding:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border:1px dashed rgba(255,255,255,0.03);color:var(--muted);text-align:center}
+    a.link{color:var(--accent);text-decoration:none}
+    .content{line-height:1.7;color:#dfeeff}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">WQ</div>
+        <div>
+          <h1>WisdomQuotesToday</h1>
+          <div class="small">Daily wisdom · Motivation · Practical knowledge</div>
+        </div>
+      </div>
+
+      <nav>
+        <a class="btn" href="#home">Home</a>
+        <a class="btn" href="#blog">Blog</a>
+        <a class="btn" href="#about">About</a>
+        <a class="btn" href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main class="grid" id="home">
+      <section>
+        <div class="card" style="margin-top:14px">
+          <div class="quote">"Knowledge without action is like a lamp without light."</div>
+          <p class="small" style="margin-top:8px">Short quotes, practical steps and guides to help you grow.</p>
+        </div>
+
+        <div class="card" style="margin-top:14px" id="featured">
+          <h2 style="margin:0 0 8px 0">Featured Articles</h2>
+
+          <!-- Sample posts (client-side) -->
+          <div id="posts"></div>
+
+          <!-- In-content ad slot (AdSense may use this, Auto Ads handles placements) -->
+          <div class="ad-slot">
+            <strong>Ad space (Auto Ads)</strong><br><span class="small">Google Auto Ads will place ads automatically after approval.</span>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:14px" id="how">
+          <h3 style="margin:0 0 8px 0">How this site earns (quick)</h3>
+          <div class="content">
+            <p>After you get AdSense approval, Auto Ads will show ads on pages. Visitors viewing or clicking ads will generate earnings. Add more quality posts and share to social to increase traffic and income.</p>
+          </div>
+        </div>
+
+      </section>
+
+      <aside>
+        <div class="card">
+          <div class="small">Search posts</div>
+          <div class="search">
+            <input id="q" type="text" placeholder="Search..." />
+            <button class="btn-primary" onclick="renderList()">Search</button>
+          </div>
+
+          <div style="margin-top:12px">
+            <div class="small">Quote of the day</div>
+            <div style="margin-top:8px" id="qod"></div>
+          </div>
+
+          <div style="margin-top:12px" class="card">
+            <div class="small">Quick tips</div>
+            <ol style="color:var(--muted);margin-top:8px;padding-left:16px">
+              <li>Publish helpful posts (10+).</li>
+              <li>Share on social for traffic.</li>
+              <li>Apply for AdSense from Google dashboard.</li>
+            </ol>
+          </div>
+
+          <div style="margin-top:12px" class="card">
+            <div class="small">AdSense status</div>
+            <div class="small" id="adsStatus">Auto Ads script included. Apply/verify site in AdSense dashboard.</div>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <!-- ABOUT / CONTACT / PRIVACY sections (single-page navigation) -->
+    <div id="pages" style="margin-top:18px">
+      <div class="card" id="aboutPage">
+        <h2>About</h2>
+        <p class="small">WisdomQuotesToday shares short practical posts, motivational quotes, and guides on life and earning. Edit 'About' and 'Contact' with your real info before applying to AdSense.</p>
+      </div>
+
+      <div class="card" id="contactPage" style="margin-top:12px">
+        <h2>Contact</h2>
+        <p class="small">Email: <strong>admin@wisdomquotestoday.local</strong> (replace with real email after deploy)</p>
+        <p class="small">Message form: (prepared locally) — connect to Formspree or Netlify Forms after deploy.</p>
+      </div>
+
+      <div class="card" id="privacyPage" style="margin-top:12px">
+        <h2>Privacy Policy</h2>
+        <p class="small">This site may display third-party ads (Google AdSense). We do not sell personal data. Contact admin@wisdomquotestoday.local for inquiries. Update this policy with your real domain and contact details before applying to AdSense.</p>
+      </div>
+    </div>
+
+    <footer>
+      © <span id="yr"></span> WisdomQuotesToday — All rights reserved.
+    </footer>
+  </div>
+
+  <!-- Small JS to render sample posts and simple navigation -->
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    const POSTS = [
+      { id:'p1',title:'Be kind to yourself',slug:'be-kind-to-yourself',excerpt:'Self-compassion fuels growth.',content:'Self-compassion fuels growth. Treat mistakes as lessons.'},
+      { id:'p2',title:'Small steps every day',slug:'small-steps',excerpt:'Big goals break into small daily actions.',content:'Big goals break into small daily actions. Commit to 10 minutes every day.'},
+      { id:'p3',title:'Gratitude and success',slug:'gratitude-and-success',excerpt:'Gratitude rewires your focus to abundance.',content:'Express gratitude daily.'},
+      { id:'p4',title:'How to build focus',slug:'build-focus',excerpt:'Focus is a skill.',content:'Remove distractions and practice short focused sessions.'},
+      { id:'p5',title:'Morning rituals for peace',slug:'morning-rituals',excerpt:'Simple morning routines bring clarity.',content:'Create a 5-minute ritual.'},
+      { id:'p6',title:'Faith over fear',slug:'faith-over-fear',excerpt:'Trust reduces anxiety.',content:'Take small steps and trust the process.'}
+    ];
+
+    function renderList(){
+      const q = (document.getElementById('q').value || '').toLowerCase();
+      const el = document.getElementById('posts');
+      let filtered = POSTS.filter(p => p.title.toLowerCase().includes(q) || p.excerpt.toLowerCase().includes(q));
+      if(q && filtered.length === 0) {
+        el.innerHTML = "<div class='post'><em>No posts found for '"+q+"'.</em></div>";
+        return;
+      }
+      el.innerHTML = filtered.map(post =>
+        `<div class='post'>
+          <strong>${post.title}</strong>
+          <div class='small'>${post.excerpt}</div>
+        </div>`
+      ).join('');
+    }
+
+    // Initial render of posts
+    renderList();
+
+    // Quote of the day (basic rotation)
+    const QUOTES = [
+      "Challenges are what make life interesting.",
+      "Patience is not the ability to wait, but how you act while waiting.",
+      "Your only limit is your mind.",
+      "Great things never come from comfort zones.",
+      "The best time to begin is now.",
+      "You become what you believe."
+    ];
+    function showQuoteOfDay() {
+      const ndx = new Date().getDate() % QUOTES.length;
+      document.getElementById('qod').textContent = QUOTES[ndx];
+    }
+    showQuoteOfDay();
+
+    // Simple single-page navigation
+    window.addEventListener('hashchange', function() {
+      const h = location.hash.replace('#','');
+      document.querySelectorAll('#pages > div').forEach(el => {
+        el.style.display = 'none';
+      });
+      if(h === 'about') document.getElementById('aboutPage').style.display='block';
+      if(h === 'contact') document.getElementById('contactPage').style.display='block';
+      if(h === 'privacy') document.getElementById('privacyPage').style.display='block';
+      if(!h || h === 'home') {
+        document.querySelector('main').style.display='grid';
+        document.getElementById('pages').style.display='none';
+      } else {
+        document.querySelector('main').style.display='none';
+        document.getElementById('pages').style.display='block';
+      }
+    });
+
+    // On load, show home
+    window.dispatchEvent(new Event('hashchange'));
+  </script>
+</body>
+</html>
